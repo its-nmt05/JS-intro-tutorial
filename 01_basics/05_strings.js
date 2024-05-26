@@ -26,4 +26,4 @@ const url = "https://www.google.com/search?q=Birds%20Nest"
 // console.log(url.replace("%20", "-"))
 // console.log(url.includes("google"))
 
-// console.log(gameName.split('-'));
+// console.log(gameName.split('-'))
