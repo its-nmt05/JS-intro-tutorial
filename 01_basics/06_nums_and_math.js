@@ -29,4 +29,4 @@ const hundreds = 10000000
 const min = 10
 const max = 20
 
-// console.log(Math.floor(Math.random() * (max - min + 1)) + min) # trick to geerate a random number
+// console.log(Math.floor(Math.random() * (max - min + 1)) + min) # trick to generate a random number in a range
