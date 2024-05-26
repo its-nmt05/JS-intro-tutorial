@@ -9,35 +9,35 @@ Instead, the type of a variable is inferred from the value assigned to it,
 and it can change during the execution of the program.
 */
 
-const score = 100
-const scoreValue = 100.3    // Both are numbers. No special data-type for floats
+const score = 100;
+const scoreValue = 100.3; // Both are numbers. No special data-type for floats
 
-const isLoggedIn = false
-const outsidetemp = null
-let userEmail   // undefined
+const isLoggedIn = false;
+const outsidetemp = null;
+let userEmail; // undefined
 
-const id = Symbol('123')
-const anotherId = Symbol('123')
-// console.log(id === anotherId) # false 
+const id = Symbol("123");
+const anotherId = Symbol("123");
+// console.log(id === anotherId) # false
 
 // const bigNumber = 1234224313424325346476n # bigInt
 
 // Reference (Non primitive) => Pass by reference
 // Arrays, Objects, Functions
 
-const heroes = ["spiderman", "iron man", "thor"]
+const heroes = ["spiderman", "iron man", "thor"];
 const myObj = {
-    name: "Nirmalya",
-    age: 18,
-    partners: {
-        number: 3,
-        names: []
-    },  // embeded object
-}   // object => everything inside {}
+  name: "Nirmalya",
+  age: 18,
+  partners: {
+    number: 3,
+    names: [],
+  }, // embeded object
+}; // object => everything inside {}
 
-const myFunction = function (){
-    console.log("hello world")
-}
+const myFunction = function () {
+  console.log("hello world");
+};
 // console.log(typeof myFunction) # function
 
 /*
@@ -56,3 +56,25 @@ Return type of variables in JavaScript:
        Function => function
        Object => object
 */
+
+// *** Memory ***
+
+// Stack (Primitive), Heap (Non primitive)
+
+let myName = "Nirmalya"
+let anotherName = myName
+anotherName = "John"
+
+// console.log(myName)  # Nirmalya
+// console.log(anotherName) # John
+
+let userOne = {
+  email: "me@google.com",
+  phone: "+91 98765 43210",
+};
+
+let userTwo = userOne
+userTwo.email = "nirmalya@google.com"
+
+// console.log(userOne.email)   # nirmalya@google.com 
+// console.log(userTwo.email)   # nirmalya@google.com
