@@ -52,3 +52,24 @@ const users = [
 
 // console.log(tinderUser.hasOwnProperty('isLoggedIn'))
 // console.log(Object.hasOwn(tinderUser, 'isLoggedIn')) # prefer to use this over hasOwnProperty()
+
+// *** JSON ***
+
+const course = {
+    courseName: 'js in hindi',
+    price: "999",
+    courseInstructor: "nirmalya"
+}
+
+// course.courseInstructor
+
+const {courseInstructor: instructor} = course // syntactical sugar to make it easier to access object's properties
+// console.log(courseInstructor)
+// console.log(instructor)
+
+// JSON object
+// {
+//     "name": "nirmalya",
+//     "courseName": "js in hindi",
+//     "price": "free"
+// }
