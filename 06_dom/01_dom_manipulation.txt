@@ -1,0 +1,57 @@
+Input: document.getElementById('title')
+Output: <h1 id=​"title" class=​"heading">​…​</h1>
+
+Input: document.getElementById('title').id
+Output: 'title'
+
+Input: document.getElementById('title').className
+Output: 'heading'
+
+Input: document.getElementById('title').class
+Output: undefined
+
+Input: document.getElementById('title').getAttribute('id')
+Output: 'title'
+
+Input: document.getElementById('title').getAttribute('class')
+Output: 'heading'
+
+# document.getElementById('title').setAttribute('class', 'test')
+
+# const title = document.getElementById('title')
+
+Input: title.textContent
+Output: 'DOM learning on Chai aur Code test text'
+
+Input: title.innerText
+Output: 'DOM learning on Chai aur Code'
+
+Input: title.innerHTML
+Output: 'DOM learning on Chai aur Code <span style="display: none;">test text</span>'	
+
+Input: document.querySelector('.heading')
+Output: <h1 id=​"title" class=​"heading">​…​</h1>
+
+Input: document.querySelector('#title')
+Output: <h1 id=​"title" class=​"heading">​…​</h1>
+
+Input: document.querySelector('input[type="password"]')
+Output: <input type="password" name id>
+
+Input: document.querySelector('ul')
+Output: <ul>…</ul>
+
+# const myul = document.querySelector('ul')
+
+Input: myul.querySelector('li')
+Output: <li class="list-item">…</li>
+
+Input: myul.querySelectorAll('li')
+Output: NodeList(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+Input: Array.from(document.querySelectorAll('.list-item'))
+Output: (4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+Input: document.getElementsByClassName('list-item')
+Output: HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+​​
