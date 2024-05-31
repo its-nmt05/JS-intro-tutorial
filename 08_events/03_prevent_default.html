@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | Prevent default</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="fname">First name: </label>
+        <input id="fname" type="text" />
+      </div>
+      <div>
+        <label for="lname">Last name: </label>
+        <input id="lname" type="text" />
+      </div>
+      <div>
+        <input id="submit" type="submit" />
+      </div>
+    </form>
+    <p style="color: red;"></p>
+
+    <script>
+        const firstName = document.getElementById('fname')
+        const lastName = document.getElementById('lname')
+        const form = document.querySelector('form')
+        const para = document.querySelector('p')
+
+        form.addEventListener('submit', (e) => {
+            if (!firstName.value || !lastName.value){
+                e.preventDefault()
+                para.innerHTML = 'Please fill in both names!'
+            }
+            // console.log(e.type);
+        })
+    </script>
+  </body>
+</html>
