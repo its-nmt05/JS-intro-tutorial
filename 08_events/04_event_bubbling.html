@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | Event bubbling</title>
+  </head>
+  <body>
+    <div id="container">
+      <button>Click me!</button>
+    </div>
+    <pre id="output"></pre>
+
+    <script>
+        const output = document.querySelector('#output')
+        const container = document.querySelector('#container')
+        const button = document.querySelector('button')
+        const body = document.querySelector('body')
+
+        function handleClick(e) {
+            console.log(e);
+            output.innerHTML += `You clicked on: ${e.currentTarget.tagName}\n`
+        }
+        
+        // button.addEventListener('click', handleClick)
+        // container.addEventListener('click', handleClick)
+        // body.addEventListener('click', handleClick)
+
+        function handleKeyPress(e) {
+          if (e.altkey) {
+            // output.innerHTML += "You pressed ALT key\n"
+          }
+          if (e.shiftKey) {
+            // output.innerHTML += "You pressed SHIFT key\n"
+          }
+          if (e.ctrlKey) {
+            // output.innerHTML += "You pressed CTRL key\n"
+          }
+
+          if(e.key){
+            output.innerHTML += `You pressed ${e.key}\n`
+            if(e.key.toUpperCase() == 'R'){ // reset
+              output.innerHTML = ""
+            }
+          }
+        }
+
+        body.addEventListener('click', handleKeyPress)
+        body.addEventListener('keydown', handleKeyPress)
+    </script>
+  </body>
+</html>
