@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Random color example — event handler attribute</title>
+    <style>
+      button {
+        margin: 10px
+      };
+    </style>
+  </head>
+  <body>
+    <button>Change color</button>
+    <input autocomplete="off" type="text" id="textInput">
+    <div id="output"></div>
+    <script>
+      const btn = document.querySelector('button');
+
+      function random(number) {
+        return Math.round(Math.random() * (number + 1));
+      }
+
+      // other events - 'dblclick', 'mouseover', 'mouseout', 'focus', 'blur', etc.
+      
+      // btn.addEventListener('click', (event) => {
+      //   console.log(event.type);
+      //   const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+      //   document.body.style.backgroundColor = rndCol;
+      // });
+
+      function clickHandler(event) {
+        console.log(event);
+      }
+
+      // btn.onclick = clickHandler # not preferred
+      // <button onclick="bgChange()">Press me</button> # inline event handlers. Do not prefer these as well  
+       
+      // btn.addEventListener('click', clickHandler)
+      // btn.removeEventListener('click', clickHandler)
+
+      function one() {
+        console.log("One called");
+      }
+
+      function two() {
+        console.log("Two called");
+      }
+      
+      // Adding multiple listeners to the same 'event'.
+      // Note: Duplicate listeners are not allowed
+
+      // btn.addEventListener('click', one)
+      // btn.addEventListener('click', two)
+
+      function bgChange(e) {
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        e.target.parentNode.style.backgroundColor = rndCol;
+      }
+      
+      btn.addEventListener('click', bgChange)
+
+      const textInput = document.querySelector('#textInput')
+      const output = document.querySelector('#output')
+      textInput.addEventListener('keydown', (e) => {
+        // console.log(e.type);
+        // console.log(e.key);
+        output.innerHTML = `You pressed "${e.key}"`
+      })
+
+    </script>
+  </body>
+</html>
