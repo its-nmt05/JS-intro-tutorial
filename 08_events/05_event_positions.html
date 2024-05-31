@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Event positions</title>
+</head>
+<body style="background-color: #212121; color: aliceblue; height: 200vh;">
+    <h1>Lorem ipsum dolor sit amet.</h1>
+    <pre id="position"></pre>
+    <script>
+        const html = document.querySelector('html')
+        const positionText = document.getElementById('position') 
+            html.addEventListener('mousemove', (e) => {
+            positionText.innerHTML = `screenX: ${e.screenX}, screenY: ${e.screenY}\n`
+            positionText.innerHTML += `clientX: ${e.clientX}, clientY: ${e.clientY}\n`
+            positionText.innerHTML += `pageX: ${e.pageX}, pageY: ${e.pageY}\n`
+            positionText.innerHTML += `x: ${e.x}, y: ${e.y}\n`
+            // console.log(positionText.innerHTML);
+        })
+    </script>
+</body>
+</html>
