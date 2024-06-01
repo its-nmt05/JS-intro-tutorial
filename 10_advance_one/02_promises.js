@@ -102,3 +102,12 @@ fetch("https://jsonplaceholder.typicode.com/users")
     })
 
 // [VIDEO LINK]: https://www.youtube.com/watch?v=NJwRQgsu1Q8
+
+/*  
+*** Interesting ***
+If there is a 404 error then the request from a Promise
+will be available in the the then() block and not in the catch() block.
+
+This is beacuse the 404 is a part of the response itself. The network request itself
+has no idea about the status code of the response
+*/
