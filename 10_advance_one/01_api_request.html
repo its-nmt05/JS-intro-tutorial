@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance | Api request</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: aliceblue;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid aliceblue;
+        padding: 8px;
+        border-collapse: collapse;
+      }
+
+      tr:nth-child(even) {
+        background-color: #414141;
+      }
+
+      div {
+        margin-top: 10px;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>XMLHttpRequest</h1>
+    <table>
+      <tr>
+        <th>Value</th>
+        <th>State</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>UNSENT</td>
+        <td>Client has been created. open() not called yet.</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>OPENED</td>
+        <td>open() has been called.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>HEADERS_RECEIVED</td>
+        <td>send() has been called, and headers and status are available.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>LOADING</td>
+        <td>Downloading; responseText holds partial data.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>DONE</td>
+        <td>The operation is complete..</td>
+      </tr>
+    </table>
+    <div>
+      <form>
+        <input
+          placeholder="enter username"
+          autocomplete="off"
+          id="username"
+          type="text"
+          autofocus
+        />
+        <button id="getData">Get data</button>
+      </form>
+    </div>
+    <div id="showInfo"></div>
+  </body>
+  <script>
+    const form = document.querySelector("form");
+    const usernameText = document.getElementById("username");
+    const showInfo = document.querySelector("#showInfo");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = usernameText.value;
+
+      if (username) {
+        const reqUrl = `https://api.github.com/users/${username}`;
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", reqUrl);
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+          // console.log(xhr.readyState)
+          if (xhr.readyState == xhr.DONE && xhr.status == 200) {
+            const data = JSON.parse(this.responseText); // converting(parsing) from string to JSON object
+
+            const text = document.createElement("pre");
+            const profile = document.createElement("img");
+
+            const name = data.name;
+            const bio = data.bio;
+            const followers = data.followers;
+            const location = data.location;
+            const repoCount = data.public_repos;
+
+            if (name) {
+              text.innerHTML += `Name: ${name}\n`;
+            }
+            if (bio) {
+              text.innerHTML += `Bio: ${bio.trim()}\n`;
+            }
+            if (followers) {
+              text.innerHTML += `Followers: ${followers}\n`;
+            }
+            if (location) {
+              text.innerHTML += `Location: ${location}\n`;
+            }
+            if (repoCount) {
+              text.innerHTML += `Repo count: ${repoCount}\n`;
+            }
+            profile.src = data.avatar_url;
+
+            showInfo.appendChild(text);
+            showInfo.appendChild(profile);
+            showInfo.innerHTML += `<hr />`;
+
+            usernameText.value = "";
+            usernameText.focus();
+          } else {
+            usernameText.value = ""
+            usernameText.focus();
+          }
+        };
+      }
+    });
+  </script>
+</html>
