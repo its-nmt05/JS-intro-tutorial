@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <h1>Lorem ipsum dolor sit amet.</h1>
+    <pre id="time"></pre>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const timeText = document.querySelector('#time')
+    const startButton = document.getElementById('start')
+    const stopButton = document.getElementById('stop')
+    let timerId; 
+
+    function printDate() {
+        timeText.innerHTML = new Date().toLocaleTimeString()        
+    }
+
+    startButton.addEventListener('click', () => {
+        timerId = setInterval(printDate, 1000)
+        console.log("Timer started");
+    })
+
+    stopButton.addEventListener('click', () => {
+        console.log(timerId);
+        clearInterval(timerId)
+        console.log("Timer stopped");
+    })
+    </script>
+</html>
