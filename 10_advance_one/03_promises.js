@@ -49,12 +49,12 @@ process.on("rejectionHandled", (promise) => {
 const one = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve({ name: "nmt", password: "123" })
-    })
+    }, 2000)
 })
 
-const three = Promise.resolve("promiseTwo")
+const two = Promise.resolve("promiseTwo")
 
-const two = new Promise((resolve, reject) => {
+const three = new Promise((resolve, reject) => {
     setTimeout(() => {
         let error = true
         !error
@@ -62,6 +62,8 @@ const two = new Promise((resolve, reject) => {
             : reject("[ERROR] unhandled exception")
     }, 1000)
 })
+
+// *** [Composition of Promises] ***
 
 Promise.all([one, two, three])
     .then((results) => {
@@ -98,3 +100,29 @@ const improvedSetTimeout = (ms) =>
 improvedSetTimeout(1000)
     .then(() => console.log("Elpased time"))
     .catch((error) => console.log(error))
+
+// Promise.any([one, two, three])
+//     .then((values) => {
+//         console.log(`[NEW] ${values}`)
+//     })
+//     .catch((e) => console.log(`[ERROR] ${e}`))
+
+Promise.race([])
+    .then((values) => {
+        console.log(`[NEW] ${values}`)
+    })
+    .catch((e) => console.log(`[ERROR] ${e}`))
+
+/*
+The main difference b/w Promise.any() and Promise.race() is that:
+    
+    Promise.any():
+        - Waits for the first promise to resolve.
+        - If all promises reject, it rejects with an AggregateError containing all the rejection reasons.
+        - Useful when you want at least one promise to succeed.
+    
+    Promise.race():
+        - Waits for the first promise to settle (either resolve or reject).
+        - Resolves or rejects with the outcome of the first settled promise.
+        - Useful when you want the result of the fastest promise, regardless of whether it resolves or rejects.
+*/
