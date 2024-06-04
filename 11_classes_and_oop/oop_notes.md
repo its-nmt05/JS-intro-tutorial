@@ -1,25 +1,3 @@
-# Javascript and classes
-
-## OOP
-JavaScript "classes" are syntactical sugar that makes it easier to write and understand code that follows object-oriented principles. However, they still rely on JavaScript's prototype-based inheritance system. So while they look and act like classes from classical OOP languages, under the hood they are still working with prototypes.
-
-### Object
-- collection of properties and methods
-- toLowerCase()
-
-## Why use OOP
-Without OOP, the code used to become very messy and difficult to maintain(spaghetti code) without ant reusable
-components.
-
-## Parts of OOP
-- Object literal -> { }
-- Constructor functions
-- Prototypes
-- Classes
-- Instances (new, this)
-
-## 4 Pillars of OOP
-
 ## Javascript and classes
 
 ### OOP
@@ -33,8 +11,7 @@ JavaScript "classes" are syntactical sugar that makes it easier to write and und
 
 ## Why use OOP
 
-Without OOP, the code used to become very messy and difficult to maintain(spaghetti code) without ant reusable
-components.
+Without OOP, the code used to become very messy and difficult to maintain(spaghetti code) without any reusable components.
 
 ## Parts of OOP
 
@@ -85,11 +62,11 @@ The constructor function in the given code is `createUser`. It is used to create
 
 When a new object is created using the `new` keyword, JavaScript sets up the prototype linkage for the new object. This means the new object’s internal `[[Prototype]]` (i.e., `__proto__`) is set to the constructor function's `prototype` property. So here, the newly created object’s internal `[[Prototype]]` is linked to `createUser.prototype`, allowing the new object to inherit methods like `increment` and `printMe`.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/9d856d90-10ae-4d13-8d3e-3b579941168a/3edb5690-df92-4c21-b314-eaf6aceb2c96/aaa9e319-9f8b-443e-917b-6be5457463b8.png)
+![Image](prototypal_inheritance.png)
 
 ## ✨ 4 Pillars of OOP
 
-### *Abstraction*
+### 1. *Abstraction*
 
 Abstraction is a fundamental concept in programming that involves hiding the complex implementation details of a system and exposing only the necessary features to the user. It allows programmers to work with higher-level representations without needing to understand the intricate details of the underlying code.
 
@@ -125,7 +102,7 @@ In this example:
 
 This *separation of usage from implementation* is the essence of abstraction.
 
-### *Encapsulation*
+### 2. *Encapsulation*
 
 Encapsulation in Object-Oriented Programming (OOP) is the concept of bundling data (attributes) and methods (functions) that operate on the data into a single unit, typically a class. It also involves restricting direct access to some of the object's components, which can help prevent accidental interference and misuse. This is often achieved through the use of access modifiers like private, protected, and public.
 
@@ -149,7 +126,7 @@ my_car.drive()
 
 In this example, `Car` is the class. It has data (`brand` and `model`) hidden by convention (using double underscores). The `drive` method uses this data but keeps it safe from external changes. You can only control the car using the provided method.
 
-Encapsulation ****is defined as the wrapping up of data and information in a single unit. In Object Oriented Programming, Encapsulation is defined as *binding together the data and the functions that manipulate them*.
+Encapsulation is defined as the *wrapping up of data and information in a single unit*. In Object Oriented Programming, Encapsulation is defined as *binding together the data and the functions that manipulate them*.
 
 Consider a real-life example of encapsulation, in a company, there are different sections like the accounts section, finance section, sales section, etc. Now,
 
@@ -162,11 +139,11 @@ In this case, he is not allowed to directly access the data of the sales section
 
 This is what **Encapsulation ****is. Here the data of the sales section and the employees that can manipulate them are wrapped under a single name “sales section”. 
 
-### *Inheritance*
+### 3. *Inheritance*
 
 Inheritance in Object-Oriented Programming (OOP) is a mechanism where a new class (derived or child class) inherits properties and behaviors (methods) from an existing class (base or parent class). This promotes code reuse and establishes a relationship between the base and derived classes.
 
-**Example:**
+Here’s a simple example in Python to illustrate inheritance:
 
 ```python
 # Base class
@@ -202,7 +179,7 @@ print(cat.speak())  # Output: Whiskers says Meow!
 - **Derived Classes (Dog and Cat)**: Inherit from the base class and can override methods to provide specific behavior.
 - **Method Overriding**: The derived classes provide their own implementation of the `speak` method, which is different from the base class.
 
-### *Polymorphism*
+### 4. *Polymorphism*
 
 **Polymorphism** is the ability of any data to be processed in more than one form. The word itself indicates the meaning as **poly** means **many** and **morphism** means **types**. 
 
@@ -241,4 +218,4 @@ make_animal_speak(cat)  # Output: Meow!
 
 - **Base Class (Animal)**: Defines a common interface (`speak` method) which derived classes must implement.
 - **Derived Classes (Dog and Cat)**: Provide specific implementations of the `speak` method.
-- **Polymorphic Behavior**: The `make_animal_speak` function can take any object that is derived from `Animal` and call the `speak` method, demonstrating how the same interface can be used for different underlying forms (dog and cat in this case).sm
+- **Polymorphic Behavior**: The `make_animal_speak` function can take any object that is derived from `Animal` and call the `speak` method, demonstrating how the same interface can be used for different underlying forms (dog and cat in this case).
